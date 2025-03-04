@@ -291,6 +291,62 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &396022126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396022128}
+  - component: {fileID: 396022127}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &396022127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396022126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b033b9b5f3218fa42a333a57751eace8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centerObject: {fileID: 396022128}
+  orbitingObjects:
+  - {fileID: 2139289334}
+  - {fileID: 2035594970}
+  - {fileID: 1602155157}
+  - {fileID: 1108506750}
+  - {fileID: 1722552214}
+  - {fileID: 517409663}
+  - {fileID: 1089188686}
+  - {fileID: 537952608}
+  - {fileID: 537952608}
+  orbitSpeed: 10
+--- !u!4 &396022128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396022126}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 552.7, y: 28.3, z: 512.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &517409659
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +362,6 @@ GameObject:
   - component: {fileID: 517409666}
   - component: {fileID: 517409665}
   - component: {fileID: 517409667}
-  - component: {fileID: 517409668}
   m_Layer: 0
   m_Name: saturn
   m_TagString: Planet
@@ -555,22 +610,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &517409668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517409659}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10.643
-  orbitRadius: 8
-  selfRotationSpeed: 50
 --- !u!1 &525295979
 GameObject:
   m_ObjectHideFlags: 0
@@ -695,9 +734,8 @@ GameObject:
   - component: {fileID: 537952611}
   - component: {fileID: 537952610}
   - component: {fileID: 537952612}
-  - component: {fileID: 537952613}
   m_Layer: 0
-  m_Name: mars
+  m_Name: neptune
   m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -944,22 +982,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &537952613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 537952604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10.65432
-  orbitRadius: 10
-  selfRotationSpeed: 50
 --- !u!1001 &754791130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1367,8 +1389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e3a399596fdaa4aba0d9d0cec6fd2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dissolveMaterial: {fileID: 2100000, guid: 7b9274b0277b49f429706c0810b36792, type: 2}
-  dissolveSpeed: 2
+  dissolveDuration: 2
+  dissolveStrength: 0
 --- !u!1 &886703798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1651,6 @@ GameObject:
   - component: {fileID: 1089188689}
   - component: {fileID: 1089188688}
   - component: {fileID: 1089188690}
-  - component: {fileID: 1089188691}
   m_Layer: 0
   m_Name: uranus
   m_TagString: Planet
@@ -1878,22 +1899,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &1089188691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1089188682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10.623
-  orbitRadius: 9
-  selfRotationSpeed: 50
 --- !u!1 &1108506746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,7 +1914,6 @@ GameObject:
   - component: {fileID: 1108506753}
   - component: {fileID: 1108506752}
   - component: {fileID: 1108506754}
-  - component: {fileID: 1108506755}
   m_Layer: 0
   m_Name: mars
   m_TagString: Planet
@@ -2158,22 +2162,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &1108506755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1108506746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10.5432
-  orbitRadius: 6
-  selfRotationSpeed: 50
 --- !u!1 &1227494860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,9 +2420,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptA: {fileID: 833316926}
+  ScriptB: {fileID: 396022127}
   handPosition: {fileID: 1577417628}
   throwForceMultiplier: 1.5
   grabbableObjects:
+  - {fileID: 959177419}
   - {fileID: 2139289329}
   - {fileID: 2035594966}
   - {fileID: 1602155153}
@@ -2443,8 +2433,7 @@ MonoBehaviour:
   - {fileID: 517409659}
   - {fileID: 1089188682}
   - {fileID: 537952604}
-  - {fileID: 959177419}
-  - {fileID: 0}
+  - {fileID: 537952604}
 --- !u!1 &1602155153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2460,7 +2449,6 @@ GameObject:
   - component: {fileID: 1602155160}
   - component: {fileID: 1602155159}
   - component: {fileID: 1602155161}
-  - component: {fileID: 1602155162}
   m_Layer: 0
   m_Name: earth
   m_TagString: Planet
@@ -2709,22 +2697,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &1602155162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1602155153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10.123
-  orbitRadius: 5
-  selfRotationSpeed: 50
 --- !u!1 &1636096953
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,7 +3037,6 @@ GameObject:
   - component: {fileID: 1722552217}
   - component: {fileID: 1722552216}
   - component: {fileID: 1722552218}
-  - component: {fileID: 1722552219}
   m_Layer: 0
   m_Name: jupiter
   m_TagString: Planet
@@ -3314,22 +3285,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &1722552219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722552210}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10.325
-  orbitRadius: 7
-  selfRotationSpeed: 50
 --- !u!4 &1957140372 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4459864851310106429, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
@@ -3350,7 +3305,6 @@ GameObject:
   - component: {fileID: 2035594974}
   - component: {fileID: 2035594973}
   - component: {fileID: 2035594975}
-  - component: {fileID: 2035594976}
   m_Layer: 0
   m_Name: venus
   m_TagString: Planet
@@ -3599,22 +3553,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &2035594976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035594966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10.1
-  orbitRadius: 4
-  selfRotationSpeed: 50
 --- !u!1 &2134488241
 GameObject:
   m_ObjectHideFlags: 0
@@ -3739,7 +3677,6 @@ GameObject:
   - component: {fileID: 2139289337}
   - component: {fileID: 2139289336}
   - component: {fileID: 2139289338}
-  - component: {fileID: 2139289339}
   m_Layer: 0
   m_Name: mercury
   m_TagString: Planet
@@ -3988,22 +3925,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
---- !u!114 &2139289339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2139289329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8b13cfe185c15419f7da9ece33ffee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sun: {fileID: 959177423}
-  orbitSpeed: 10
-  orbitRadius: 3
-  selfRotationSpeed: 50
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4029,3 +3950,4 @@ SceneRoots:
   - {fileID: 517409663}
   - {fileID: 1089188686}
   - {fileID: 537952608}
+  - {fileID: 396022128}

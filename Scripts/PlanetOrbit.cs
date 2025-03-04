@@ -1,58 +1,54 @@
 using UnityEngine;
 
-public class PlanetOrbit : MonoBehaviour
+public class OrbitingOObjects : MonoBehaviour
 {
-    [Header("Orbit Settings")]
-    public Transform sun;
+    public Transform centerObject;
+    public Transform[] orbitingObjects;
     public float orbitSpeed = 10f;
-    public float orbitRadius = 10f;
-    public float selfRotationSpeed = 50f;
-
-    private float currentOrbitAngle = 0f;
-    private bool isGrabbed = false;
-    private Rigidbody rb;
+    private bool[] isOrbiting;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        if (sun != null)
+        if (orbitingObjects.Length != 9)
         {
-            // Calculate initial angle based on position
-            Vector3 offset = transform.position - sun.position;
-            currentOrbitAngle = Mathf.Atan2(offset.z, offset.x) * Mathf.Rad2Deg;
+            Debug.LogError("There must be exactly 9 orbiting objects.");
+            return;
+        }
+        isOrbiting = new bool[9];
+        for (int i = 0; i < 9; i++)
+        {
+            isOrbiting[i] = true;
         }
     }
 
     void Update()
     {
-        if (!isGrabbed && sun != null)
+        for (int i = 0; i < 9; i++)
         {
-            // Update orbit angle based on speed
-            currentOrbitAngle += orbitSpeed * Time.deltaTime;
-
-            // Calculate new position using angle
-            float x = sun.position.x + Mathf.Cos(currentOrbitAngle * Mathf.Deg2Rad) * orbitRadius;
-            float z = sun.position.z + Mathf.Sin(currentOrbitAngle * Mathf.Deg2Rad) * orbitRadius;
-            transform.position = new Vector3(x, transform.position.y, z);
+            if (isOrbiting[i] && orbitingObjects[i] != null)
+            {
+                orbitingObjects[i].RotateAround(centerObject.position, Vector3.up, orbitSpeed * Time.deltaTime);
+            }
         }
-
-        // Self-rotation
-        transform.Rotate(Vector3.up, selfRotationSpeed * Time.deltaTime);
     }
 
-    public void Grabbed()
-    {
-        isGrabbed = true;
-        if (rb != null) rb.isKinematic = false;
-    }
+    public void StopOrbiting1() { isOrbiting[0] = false; }
+    public void StopOrbiting2() { isOrbiting[1] = false; }
+    public void StopOrbiting3() { isOrbiting[2] = false; }
+    public void StopOrbiting4() { isOrbiting[3] = false; }
+    public void StopOrbiting5() { isOrbiting[4] = false; }
+    public void StopOrbiting6() { isOrbiting[5] = false; }
+    public void StopOrbiting7() { isOrbiting[6] = false; }
+    public void StopOrbiting8() { isOrbiting[7] = false; }
+    public void StopOrbiting9() { isOrbiting[8] = false; }
 
-    public void Released()
-    {
-        isGrabbed = false;
-        if (rb != null) rb.isKinematic = true;
-
-        // Recalculate orbit angle based on current position
-        Vector3 offset = transform.position - sun.position;
-        currentOrbitAngle = Mathf.Atan2(offset.z, offset.x) * Mathf.Rad2Deg;
-    }
+    public void StartOrbiting1() { isOrbiting[0] = true; }
+    public void StartOrbiting2() { isOrbiting[1] = true; }
+    public void StartOrbiting3() { isOrbiting[2] = true; }
+    public void StartOrbiting4() { isOrbiting[3] = true; }
+    public void StartOrbiting5() { isOrbiting[4] = true; }
+    public void StartOrbiting6() { isOrbiting[5] = true; }
+    public void StartOrbiting7() { isOrbiting[6] = true; }
+    public void StartOrbiting8() { isOrbiting[7] = true; }
+    public void StartOrbiting9() { isOrbiting[8] = true; }
 }
