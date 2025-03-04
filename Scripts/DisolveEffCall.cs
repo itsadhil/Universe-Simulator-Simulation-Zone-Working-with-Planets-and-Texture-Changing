@@ -1,56 +1,51 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
 
 public class DisolveEffCall : MonoBehaviour
 {
+    public Material dissolveMaterial; // Assign the dissolve material in the Inspector
+    public float dissolveSpeed = 2.0f;
+    private float dissolveValue = 0f;
 
-    public float dissolveDuration = 2;
-    public float dissolveStrength;
-
-    
     void Start()
     {
-        Material dissolveMaterial = GetComponent<Renderer>().sharedMaterial;
-        dissolveMaterial.SetFloat("_DisolveLevel", 0);
+        if (dissolveMaterial != null)
+            dissolveMaterial.SetFloat("_DissolveAmount", 0); // Reset to default
     }
 
     public void StartDissolver()
     {
-        StartCoroutine(Dissolver());
-    }
-
-    public IEnumerator Dissolver()
-    {
-        float elapsedTime = 0;
-        Material dissolveMaterial = GetComponent<Renderer>().sharedMaterial;
-
-        if (!dissolveMaterial.HasProperty("_DisolveLevel"))
-        {
-            Debug.LogError("Shader does not have a property named '_DisolveLevel'");
-            yield break;
-        }
-
-        while (elapsedTime < 3f) // Change duration to 3 seconds
-        {
-            elapsedTime += Time.deltaTime;
-            dissolveStrength = Mathf.Lerp(0, 0.75f, elapsedTime / 3f); // Smoothly interpolate from 0 to 0.75
-            dissolveMaterial.SetFloat("_DisolveLevel", dissolveStrength);
-            yield return null;
-        }
-
-        dissolveMaterial.SetFloat("_DisolveLevel", 0.75f); // Ensure final value is set
+        StopAllCoroutines(); 
+        StartCoroutine(DissolveEffect());
     }
 
     public void setItBackToOriginalDissolve()
     {
-        Material dissolveMaterial = GetComponent<Renderer>().sharedMaterial;
-        dissolveMaterial.SetFloat("_DisolveLevel", 0);
+        StopAllCoroutines(); 
+        StartCoroutine(RevertDissolve());
     }
 
-
-
-    void Update()
+    IEnumerator DissolveEffect()
     {
-        
+        while (dissolveValue < 1)
+        {
+            dissolveValue += Time.deltaTime * dissolveSpeed;
+            if (dissolveMaterial != null)
+                dissolveMaterial.SetFloat("_DissolveAmount", dissolveValue);
+
+            yield return null;
+        }
+    }
+
+    IEnumerator RevertDissolve()
+    {
+        while (dissolveValue > 0)
+        {
+            dissolveValue -= Time.deltaTime * dissolveSpeed;
+            if (dissolveMaterial != null)
+                dissolveMaterial.SetFloat("_DissolveAmount", dissolveValue);
+
+            yield return null;
+        }
     }
 }
